@@ -2,6 +2,16 @@ export const articles = [
     {
         title: 'article title1',
         text: 'article text 1',
+        comments: [
+            {
+                text: 'some comment',
+                id: 1
+            },
+            {
+                text: 'some other comment',
+                id: 2
+            }
+        ],
         id: 1
     },
     {
