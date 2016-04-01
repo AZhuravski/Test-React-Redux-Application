@@ -1,18 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import CommentList from './CommentList'
 import { findDOMNode } from 'react-dom'
+import toggleOpen from '../HOC/toggleOpen'
 
 class Article extends Component {
 
-    state = {
-        isOpen: false
-    }
-
     render() {
-        const { title } = this.props.article
+        const { article: { title }, isSelected } = this.props
+        const style = isSelected ? {color: 'red'} : null
         return (
             <div ref = "articleContainer">
-                <h3 onClick = {this.handleClick}>{title}</h3>
+                <h3 onClick = {this.handleClick} style = {style}>{title}</h3>
+                <a href = "#" onClick = {this.handleSelect}>select this article</a>
                 {this.getBody()}
             </div>
         )
@@ -25,8 +24,13 @@ class Article extends Component {
 */
     }
 
+    handleSelect = (ev) => {
+        const { article: {id}, selectArticle } = this.props
+        selectArticle(id)
+    }
+
     getBody() {
-        if (!this.state.isOpen) return null
+        if (!this.props.isOpen) return null
         const { article } = this.props
         return (
             <section>
@@ -37,10 +41,8 @@ class Article extends Component {
     }
 
     handleClick = (ev) => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
+        this.props.toggleOpen()
     }
 }
 
-export default Article
+export default toggleOpen(Article)
