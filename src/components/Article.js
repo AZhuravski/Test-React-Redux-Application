@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import CommentList from './CommentList'
+import CommentList from './CommentListOld'
 
 class Article extends Component {
 
@@ -8,8 +8,7 @@ class Article extends Component {
     }
 
     render() {
-        const { title, text} = this.props.article
-        const body = this.state.isOpen ? <section>{text}</section> : null
+        const { title } = this.props.article
         return (
             <div>
                 <h3 onClick = {this.handleClick}>{title}</h3>
@@ -24,7 +23,7 @@ class Article extends Component {
         return (
             <section>
                 {article.text}
-                <CommentList comments = {article.comments}/>
+                <CommentList comments = {article.comments} />
             </section>
         )
     }
