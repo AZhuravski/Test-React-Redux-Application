@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import CommentList from './CommentListOld'
+import CommentList from './CommentList'
 import { findDOMNode } from 'react-dom'
 
 class Article extends Component {
