@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+require('./style.css')
 
 class Comment extends Component {
     static propTypes = {
@@ -7,7 +8,7 @@ class Comment extends Component {
 
     render() {
         return (
-            <div>
+            <div className="comment-body">
                 {this.props.comment.text}
             </div>
         )

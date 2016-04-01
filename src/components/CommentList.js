@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import Comment from './Comment'
+import Comment from './Comment/index.js'
 
 class CommentList extends Component {
     state = {
