@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import CommentList from './CommentListOld'
+import { findDOMNode } from 'react-dom'
 
 class Article extends Component {
 
@@ -10,11 +11,18 @@ class Article extends Component {
     render() {
         const { title } = this.props.article
         return (
-            <div>
+            <div ref = "articleContainer">
                 <h3 onClick = {this.handleClick}>{title}</h3>
                 {this.getBody()}
             </div>
         )
+    }
+
+    componentDidMount() {
+/*
+        console.log('---', this.refs);
+        console.log('---', 'commentList: ', this.refs.commentList, findDOMNode(this.refs.commentList));
+*/
     }
 
     getBody() {
@@ -23,7 +31,7 @@ class Article extends Component {
         return (
             <section>
                 {article.text}
-                <CommentList comments = {article.comments} />
+                <CommentList comments = {article.comments} ref = "commentList" />
             </section>
         )
     }
