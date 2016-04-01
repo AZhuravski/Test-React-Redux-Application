@@ -1,13 +1,9 @@
 import React from 'react'
 import Comment from './Comment/index'
+import toggleOpen from '../mixins/toggleOpen'
 
 const CommentListOld = React.createClass({
-    getInitialState() {
-        return {
-            isOpen: false
-        }
-    },
-
+    mixins: [toggleOpen],
     render() {
         return (
             <div>
@@ -20,13 +16,6 @@ const CommentListOld = React.createClass({
     getLink() {
         const text = this.state.isOpen ? 'close comments' : 'open comments'
         return <a href="#" onClick = {this.toggleOpen}>{text}</a>
-    },
-
-    toggleOpen(ev) {
-        ev.preventDefault()
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
     },
 
     getBody() {
