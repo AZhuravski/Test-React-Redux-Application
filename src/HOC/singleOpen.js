@@ -1,6 +1,6 @@
 import React, { Component as ReactComponent} from 'react'
 
-export default (Component) => class extends ReactComponent {
+export default (Component) => class SingleOpenHOC extends ReactComponent {
     state = {
         openItemId: null
     }

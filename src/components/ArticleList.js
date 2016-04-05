@@ -7,6 +7,11 @@ class AricleList extends Component {
         selectedArticles: []
     }
 
+    static propTypes = {
+        articles: PropTypes.array.isRequired,
+        deleteArticle: PropTypes.func.isRequired
+    }
+
     render() {
         return (
             <div>
