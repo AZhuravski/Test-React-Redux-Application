@@ -22,6 +22,10 @@ class AppContainer extends Component {
         articleStore.addChangeListener(this.changeArticles)
     }
 
+    componentWillUnmount() {
+        articleStore.removeChangeListener(this.changeArticles)
+    }
+
     changeArticles = () => {
         this.setState(this.getState())
     }

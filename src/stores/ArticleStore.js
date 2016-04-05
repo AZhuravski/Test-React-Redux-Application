@@ -27,6 +27,10 @@ class ArticleStore extends EventEmitter {
         this.on('CHANGE_EVENT', callback)
     }
 
+    removeChangeListener(callback) {
+        this.removeListener('CHANGE_EVENT', callback)
+    }
+
     getById = (id) => {
         return this.__items[id]
     }
