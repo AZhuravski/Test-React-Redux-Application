@@ -5,12 +5,15 @@ export default (Component) => class extends ReactComponent {
         openItemId: null
     }
 
-    openItem = openItemId => ev => this.setState({ openItemId })
+    openItem = id => ev => {
+        const openItemId = id === this.state.openItemId ? null : id
+        this.setState({ openItemId })
+    }
 
     isOpen = id => this.state.openItemId === id
 
     render() {
-        return <Component {...this.props} {...this.state}
+        return <Component {...this.props}
             isOpen = {this.isOpen}
             openItem = {this.openItem}
         />
