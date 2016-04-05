@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { articleStore } from '../stores'
-import ArticleList from './ArticleList'
+import ArticleList from './../components/ArticleList'
+import { deleteArticle } from '../AC/articles'
 
 class AppContainer extends Component {
     static propTypes = {
@@ -31,7 +32,7 @@ class AppContainer extends Component {
     }
 
     render() {
-        return <ArticleList articles = {this.state.articles}/>
+        return <ArticleList articles = {this.state.articles} deleteArticle = {deleteArticle}/>
     }
 }
 

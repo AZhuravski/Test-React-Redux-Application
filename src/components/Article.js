@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import CommentList from './CommentList'
 import { findDOMNode } from 'react-dom'
-import { deleteArticle } from '../AC/articles'
 
 class Article extends Component {
 
     render() {
-        const { article: { title }, isSelected, openItem } = this.props
+        const { article: { title }, isSelected, openItem, deleteArticle } = this.props
         const style = isSelected ? {color: 'red'} : null
         return (
             <div ref = "articleContainer">
@@ -20,7 +19,7 @@ class Article extends Component {
 
     deleteArticle = (ev) => {
         ev.preventDefault()
-        deleteArticle(this.props.article.id)
+        this.props.deleteArticle(this.props.article.id)
     }
 
     componentDidMount() {

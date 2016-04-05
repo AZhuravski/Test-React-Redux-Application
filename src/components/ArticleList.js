@@ -25,6 +25,7 @@ class AricleList extends Component {
                     article = {article}
                     openItem = {openItem(article.id)}
                     isOpen = {isOpen(article.id)}
+                    deleteArticle = {this.props.deleteArticle}
                     isSelected = {this.state.selectedArticles.includes(article.id)}
                     selectArticle = {this.selectArticle}
                 />
