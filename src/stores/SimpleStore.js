@@ -1,8 +1,10 @@
 import { EventEmitter } from 'events'
+import DataWrapper from './DataWrapper'
 
 class SimpleStore extends EventEmitter {
-    constructor(initialData) {
+    constructor(stores, initialData) {
         super()
+        this.__stores = stores
         this.__items = {}
         if (initialData) initialData.forEach(this.__add)
     }
@@ -19,6 +21,14 @@ class SimpleStore extends EventEmitter {
         this.removeListener('CHANGE_EVENT', callback)
     }
 
+    getStores() {
+        return this.__stores
+    }
+
+    getStore(name) {
+        return this.__stores[name]
+    }
+
     getById = (id) => {
         return this.__items[id]
     }
@@ -28,7 +38,7 @@ class SimpleStore extends EventEmitter {
     }
 
     __add = (item) => {
-        this.__items[item.id] = item
+        this.__items[item.id] = new DataWrapper(item, this)
     }
 
     __delete = (id) => {
