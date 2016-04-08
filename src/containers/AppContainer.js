@@ -14,13 +14,16 @@ class AppContainer extends Component {
     }
 
     render() {
-        return <ArticleList articles = {this.props.articles} deleteArticle = {deleteArticle}/>
+        const { articles, loading } = this.props
+        if (loading) return <h1>Loading...</h1>
+        return <ArticleList articles = {articles} deleteArticle = {deleteArticle}/>
     }
 }
 
 function getState(stores) {
     return {
-        articles: stores.articles.getAll()
+        articles: stores.articles.getAll(),
+        loading: stores.articles.loading
     }
 }
 

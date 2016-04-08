@@ -7,14 +7,16 @@ export function asyncAC(apiCall, type) {
             type: type + START
         })
 
-        apiCall()
-            .done(response => AppDispatcher.dispatch({
-                type: type + SUCCESS,
-                response
-            }))
-            .fail(error => AppDispatcher.dispatch({
-                type: type + FAIL,
-                error
-            }))
+        setTimeout(() => {
+            apiCall()
+                .done(response => AppDispatcher.dispatch({
+                    type: type + SUCCESS,
+                    response
+                }))
+                .fail(error => AppDispatcher.dispatch({
+                    type: type + FAIL,
+                    error
+                }))
+        }, 1000)
     }
 }
