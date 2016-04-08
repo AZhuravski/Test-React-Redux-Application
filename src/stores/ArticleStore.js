@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher'
 import SimpleStore from './SimpleStore'
-import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES_START, LOAD_ALL_ARTICLES_SUCCESS, LOAD_ALL_ARTICLES_FAIL } from '../constants'
+import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, FAIL } from '../constants'
 
 class ArticleStore extends SimpleStore {
     constructor(...args) {
@@ -19,16 +19,16 @@ class ArticleStore extends SimpleStore {
                     article.comments = (article.comments || []).concat(data.id)
                     break
 
-                case LOAD_ALL_ARTICLES_START:
+                case LOAD_ALL_ARTICLES + START:
                     this.loading = true
                     break
 
-                case LOAD_ALL_ARTICLES_SUCCESS:
+                case LOAD_ALL_ARTICLES + SUCCESS:
                     response.forEach(this.__add)
                     this.loading = false
                     break;
 
-                case LOAD_ALL_ARTICLES_FAIL:
+                case LOAD_ALL_ARTICLES + FAIL:
                     this.error = error
                     break;
 
