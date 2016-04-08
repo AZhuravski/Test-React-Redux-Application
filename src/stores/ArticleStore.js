@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher'
 import SimpleStore from './SimpleStore'
-import { DELETE_ARTICLE } from '../constants'
+import { DELETE_ARTICLE, ADD_COMMENT } from '../constants'
 
 class ArticleStore extends SimpleStore {
     constructor(...args) {
@@ -13,7 +13,13 @@ class ArticleStore extends SimpleStore {
                 case DELETE_ARTICLE:
                     this.__delete(data.id)
                     this.emitChange()
-                    break;
+                    break
+
+                case ADD_COMMENT:
+                    const article = this.getById(data.articleId)
+                    article.comments = (article.comments || []).concat(data.id)
+                    this.emitChange()
+                    break
             }
         })
     }
