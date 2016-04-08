@@ -11,6 +11,13 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/static/'
     },
+    devServer: {
+//        historyApiFallback: true,
+        proxy: [{
+            path: '/api/*',
+            target: 'http://localhost:3001'
+        }]
+    },
     module: {
         loaders: [
             {
