@@ -1,5 +1,6 @@
 import AppDispatcher from '../dispatcher'
 import SimpleStore from './SimpleStore'
+import { loadAllArticles } from '../AC/articles'
 import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, LOAD_ARTICLE_BY_ID, START, SUCCESS, FAIL } from '../constants'
 
 class ArticleStore extends SimpleStore {
@@ -44,6 +45,12 @@ class ArticleStore extends SimpleStore {
             }
             this.emitChange()
         })
+    }
+
+    getOrLoadAll() {
+        const articles = this.getAll()
+        if (!articles.length && !this.loading) loadAllArticles()
+        return articles
     }
 }
 

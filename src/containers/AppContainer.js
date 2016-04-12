@@ -9,10 +9,12 @@ class AppContainer extends Component {
         articles: PropTypes.array.isRequired
     };
 
+/*
     componentDidMount() {
         loadAllArticles()
     }
 
+*/
     render() {
         const { articles, loading } = this.props
         if (loading) return <h1>Loading...</h1>
@@ -22,7 +24,7 @@ class AppContainer extends Component {
 
 function getState(stores) {
     return {
-        articles: stores.articles.getAll(),
+        articles: stores.articles.getOrLoadAll(),
         loading: stores.articles.loading
     }
 }
