@@ -13,7 +13,7 @@ class Article extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isOpen && !this.props.isOpen) loadArticleById({id: nextProps.article.id})
+        if (nextProps.isOpen && !this.props.isOpen && !nextProps.article.text) loadArticleById({id: nextProps.article.id})
     }
 
     render() {
@@ -49,6 +49,7 @@ class Article extends Component {
     getBody() {
         if (!this.props.isOpen) return null
         const { article } = this.props
+        if (article.loading) return <h3>Loading...</h3>
         return (
             <section>
                 {article.text}
