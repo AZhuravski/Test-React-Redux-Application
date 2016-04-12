@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Navigation from '../containers/Navigation'
 
 class Articles extends Component {
     static propTypes = {
@@ -8,7 +9,7 @@ class Articles extends Component {
     render() {
         return (
             <div>
-                Some navigation
+                <Navigation />
                 {this.props.children}
             </div>
         )

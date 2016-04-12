@@ -8,7 +8,7 @@ class ArticlePage extends Component {
     render() {
         return (
             <div>
-                <h3>Article page</h3>
+                <h3>Article page {this.props.params.id}</h3>
             </div>
         )
     }
