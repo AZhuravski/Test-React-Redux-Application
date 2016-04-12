@@ -9,6 +9,7 @@ class ArticleStore extends SimpleStore {
 
         AppDispatcher.register((action) => {
             const { type, data, response } = action
+            let article
 
             switch (type) {
                 case DELETE_ARTICLE:
@@ -16,7 +17,7 @@ class ArticleStore extends SimpleStore {
                     break
 
                 case ADD_COMMENT:
-                    const article = this.getById(data.articleId)
+                    article = this.getById(data.articleId)
                     article.comments = (article.comments || []).concat(data.id)
                     break
 
@@ -34,6 +35,7 @@ class ArticleStore extends SimpleStore {
                     break;
 
                 case LOAD_ARTICLE_BY_ID + START:
+                    if (!this.getById(data.id)) this.__add(data)
                     this.getById(data.id).loading = true
                     break;
 
