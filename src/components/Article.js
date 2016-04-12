@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import CommentList from './CommentList'
 import { findDOMNode } from 'react-dom'
+import { loadArticleById } from '../AC/articles'
 
 class Article extends Component {
     static propTypes = {
@@ -10,6 +11,11 @@ class Article extends Component {
         openItem: PropTypes.func.isRequired,
         deleteArticle: PropTypes.func.isRequired
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isOpen && !this.props.isOpen) loadArticleById({id: nextProps.article.id})
+    }
+
     render() {
         const { article: { title }, isSelected, openItem, deleteArticle } = this.props
         const style = isSelected ? {color: 'red'} : null
