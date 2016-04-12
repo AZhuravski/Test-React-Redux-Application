@@ -8,8 +8,9 @@ import NewArticlePage from './RouteHandlers/NewArticlePage'
 export default (
     <Router history = {browserHistory} >
         <Route path="/" component = {IndexPage} >
+            <Route path = "articles/new" component = {NewArticlePage} />
             <Route path = "articles" component = {Articles} >
-                <Route path = "new" component = {NewArticlePage} />
+                <Route path = "/new" component = {NewArticlePage} />
                 <Route path = ":id" component = {ArticlePage} />
             </Route>
         </Route>
