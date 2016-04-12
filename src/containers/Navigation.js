@@ -11,7 +11,10 @@ class Navigation extends Component {
     render() {
         const { articles, loading } = this.props
         if (loading) return <h3>Loading...</h3>
-        const links = articles.map(article => <li key={article.id}><Link to={`/articles/${article.id}`}>{article.title}</Link></li>)
+        const links = articles.map(article =>
+            <li key={article.id}>
+                <Link to={`/articles/${article.id}`} activeClassName="active" activeStyle = {{color: 'red'}}>{article.title}</Link>
+            </li>)
         return (
             <ul>
                 {links}
