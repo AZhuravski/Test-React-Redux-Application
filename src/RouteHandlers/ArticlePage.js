@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-class IndexPage extends Component {
+class ArticlePage extends Component {
     static propTypes = {
 
     };
@@ -8,11 +8,10 @@ class IndexPage extends Component {
     render() {
         return (
             <div>
-                <h1>News Application!</h1>
-                {this.props.children}
+                <h3>Article page</h3>
             </div>
         )
     }
 }
 
-export default IndexPage
+export default ArticlePage
