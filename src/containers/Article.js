@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import { loadArticleById, deleteArticle } from '../AC/articles'
 import Article from '../components/Article'
 
-class ArticleConainer extends Component {
+class ArticleContainer extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
         article: PropTypes.object
@@ -33,4 +33,4 @@ function getState(stores, props) {
     }
 }
 
-export default connectToStore(['articles'], getState)(ArticleConainer)
+export default connectToStore(['articles'], getState)(ArticleContainer)
