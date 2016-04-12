@@ -11,7 +11,7 @@ class ArticlePage extends Component {
         return (
             <div>
                 <h3>Article page {id}</h3>
-                <ArticleContainer id = {id} />
+                <ArticleContainer id = {id} key = {id} />
             </div>
         )
     }

@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import connectToStore from '../HOC/connectToStore'
 import { Link } from 'react-router'
-import { loadArticleById } from '../AC/articles'
+import { loadArticleById, deleteArticle } from '../AC/articles'
+import Article from '../components/Article'
 
-class Article extends Component {
+class ArticleConainer extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
         article: PropTypes.object
@@ -13,20 +14,23 @@ class Article extends Component {
         const { article } = this.props
         if (!article || article.loading) return <h3>Loading...</h3>
 
-        return (
-            <h3>{article.title}</h3>
-        )
+        return <Article
+            article = {article}
+            ignoreLoading = {true}
+            deleteArticle = {deleteArticle}
+            isOpen = {true}
+        />
     }
 }
 
 function getState(stores, props) {
     const { id } = props
     const article = stores.articles.getById(id)
-    if (!article) loadArticleById({ id })
+    if (!article || !article.text) loadArticleById({ id })
 
     return {
         article: article
     }
 }
 
-export default connectToStore(['articles'], getState)(Article)
+export default connectToStore(['articles'], getState)(ArticleConainer)

@@ -6,14 +6,18 @@ import { loadArticleById } from '../AC/articles'
 class Article extends Component {
     static propTypes = {
         article: PropTypes.object.isRequired,
-        selectArticle: PropTypes.func.isRequired,
+        selectArticle: PropTypes.func,
         isSelected: PropTypes.bool,
-        openItem: PropTypes.func.isRequired,
-        deleteArticle: PropTypes.func.isRequired
+        isOpen: PropTypes.bool.isRequired,
+        openItem: PropTypes.func,
+        deleteArticle: PropTypes.func.isRequired,
+        ignoreLoading: PropTypes.bool
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isOpen && !this.props.isOpen && !nextProps.article.text) loadArticleById({id: nextProps.article.id})
+        const { article, isOpen, ignoreLoading } = nextProps
+        if (ignoreLoading) return
+        if (isOpen && !this.props.isOpen && !article.text) loadArticleById({id: article.id})
     }
 
     render() {
@@ -43,7 +47,7 @@ class Article extends Component {
 
     handleSelect = (ev) => {
         const { article: {id}, selectArticle } = this.props
-        selectArticle(id)
+        if (selectArticle) selectArticle(id)
     }
 
     getBody() {
