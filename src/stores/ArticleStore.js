@@ -26,7 +26,7 @@ class ArticleStore extends SimpleStore {
                     break
 
                 case LOAD_ALL_ARTICLES + SUCCESS:
-                    response.forEach(this.__add)
+                    response.forEach(this.__update)
                     this.loading = false
                     break;
 
@@ -35,8 +35,7 @@ class ArticleStore extends SimpleStore {
                     break;
 
                 case LOAD_ARTICLE_BY_ID + START:
-                    if (!this.getById(data.id)) this.__add(data)
-                    this.getById(data.id).loading = true
+                    this.__update({...data, loading: true})
                     break;
 
                 case LOAD_ARTICLE_BY_ID + SUCCESS:

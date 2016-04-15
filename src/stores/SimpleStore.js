@@ -44,6 +44,12 @@ class SimpleStore extends EventEmitter {
     __delete = (id) => {
         delete this.__items[id]
     }
+
+    __update = (item) => {
+        const entity = this.getById(item.id)
+        if (!entity) return this.__add(item)
+        Object.assign(entity, item)
+    }
 }
 
 export default SimpleStore
