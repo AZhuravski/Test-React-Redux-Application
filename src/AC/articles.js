@@ -11,5 +11,5 @@ export function deleteArticle(id) {
     })
 }
 
-export const loadAllArticles = asyncAC(loadAll, LOAD_ALL_ARTICLES, () => history.push('/articles/'))
-export const loadArticleById = asyncAC(loadById, LOAD_ARTICLE_BY_ID)
+export const loadAllArticles = asyncAC(loadAll, LOAD_ALL_ARTICLES)
+export const loadArticleById = asyncAC(loadById, LOAD_ARTICLE_BY_ID, (dfd) => dfd.fail(() => history.push('/articles/')))

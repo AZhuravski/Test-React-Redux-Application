@@ -9,7 +9,7 @@ export function asyncAC(apiCall, type, callback) {
         })
 
         setTimeout(() => {
-            apiCall(data, ...args)
+            const dfd = apiCall(data, ...args)
                 .done(response => AppDispatcher.dispatch({
                     type: type + SUCCESS,
                     data,
@@ -20,7 +20,7 @@ export function asyncAC(apiCall, type, callback) {
                     data,
                     error
                 }))
-                .done(callback)
+            if (callback) callback(dfd)
         }, 1000)
     }
 }
