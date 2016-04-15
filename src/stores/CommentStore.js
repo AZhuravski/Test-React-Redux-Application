@@ -8,7 +8,7 @@ class CommentStore extends SimpleStore {
         super(...args)
         this.pagination = {}
 
-        AppDispatcher.register((action) => {
+        this.dispatchToken = AppDispatcher.register((action) => {
             const { type, data, response } = action
 
             switch (type) {
