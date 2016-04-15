@@ -9,6 +9,8 @@ import CommentsRoot from './RouteHandlers/CommentsRoot'
 import CommentsPage from './RouteHandlers/CommentsPage'
 import ArticlesIndex from './RouteHandlers/ArticlesIndex'
 import NotFound from './RouteHandlers/NotFound'
+import { commentStore } from './stores'
+
 
 export default (
     <Router history = {history} >
@@ -22,9 +24,18 @@ export default (
             </Route>
             <Route path = "comments" component = {CommentsRoot} >
                 <IndexRedirect to = "1" />
-                <Route path = ":page" component = {CommentsPage} />
+                <Route path = ":page" component = {CommentsPage}
+                    onEnter = {checkPage}
+                    onLeave = {() => console.log('leaving route')}
+                />
             </Route>
         </Route>
         <Route path = "*" component = {NotFound} />
     </Router>
 )
+
+function checkPage(routeData, replace) {
+    if (!commentStore.total) return
+    console.log('---', routeData.params.page * 10);
+    if ((routeData.params.page - 1) * 10 > commentStore.total) replace('/comments/1')
+}
