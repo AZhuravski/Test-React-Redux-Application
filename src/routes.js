@@ -1,5 +1,6 @@
 import React from 'react'
-import { Router, Route, IndexRoute, Redirect, IndexRedirect, hashHistory, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, Redirect, IndexRedirect } from 'react-router'
+import history from './history'
 import IndexPage from './RouteHandlers/IndexPage'
 import Articles from './RouteHandlers/Articles'
 import ArticlePage from './RouteHandlers/ArticlePage'
@@ -10,7 +11,7 @@ import ArticlesIndex from './RouteHandlers/ArticlesIndex'
 import NotFound from './RouteHandlers/NotFound'
 
 export default (
-    <Router history = {browserHistory} >
+    <Router history = {history} >
         <Redirect from = "/" to = "/articles" />
         <Route path="/" component = {IndexPage} >
             <Route path = "articles/new" component = {NewArticlePage} />

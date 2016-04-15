@@ -10,11 +10,15 @@ class Articles extends Component {
     render() {
         return (
             <div>
-                <Link to="/articles/new">New article</Link>
+                <h3 onClick={this.redirectToNew}>New article</h3>
                 <Navigation />
                 {this.props.children}
             </div>
         )
+    }
+
+    redirectToNew = (ev) => {
+        this.props.history.push('/articles/new')
     }
 }
 
