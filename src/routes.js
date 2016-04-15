@@ -36,6 +36,5 @@ export default (
 
 function checkPage(routeData, replace) {
     if (!commentStore.total) return
-    console.log('---', routeData.params.page * 10);
     if ((routeData.params.page - 1) * 10 > commentStore.total) replace('/comments/1')
 }
