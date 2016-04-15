@@ -8,11 +8,16 @@ class Navigation extends Component {
         loading: PropTypes.bool
     };
 
+    static contextTypes = {
+        style: PropTypes.object
+    }
+
     render() {
+        const { style } = this.context
         const { articles, loading } = this.props
         if (loading) return <h3>Loading...</h3>
         const links = articles.map(article =>
-            <li key={article.id}>
+            <li key={article.id} style = {style}>
                 <Link to={`/articles/${article.id}`} activeClassName="active" activeStyle = {{color: 'red'}}>{article.title}</Link>
             </li>)
         return (

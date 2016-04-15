@@ -7,6 +7,16 @@ class Articles extends Component {
 
     };
 
+    static childContextTypes = {
+        style: PropTypes.object
+    }
+
+    getChildContext() {
+        return {
+            style: {color: 'green'}
+        }
+    }
+
     render() {
         return (
             <div>

@@ -15,7 +15,8 @@ class Article extends Component {
     }
 
     static contextTypes = {
-        router: PropTypes.object
+        router: PropTypes.object,
+        style: PropTypes.object
     }
 
     componentWillReceiveProps(nextProps) {
@@ -26,7 +27,7 @@ class Article extends Component {
 
     render() {
         const { article: { title }, isSelected, openItem, deleteArticle } = this.props
-        const style = isSelected ? {color: 'red'} : null
+        const { style } = this.context
         return (
             <div ref = "articleContainer">
                 <h3 onClick = {openItem} style = {style}>{title}</h3>
