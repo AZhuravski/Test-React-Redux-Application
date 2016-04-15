@@ -7,6 +7,10 @@ export default (storeNames, getStateFromStores) => (Component) => class ConnectT
         this.state = getStateFromStores(stores, props)
     }
 
+    componentWillReceiveProps(props) {
+        this.setState(getStateFromStores(stores, props))
+    }
+
     componentDidMount = () => {
         storeNames
             .map(name => stores[name])

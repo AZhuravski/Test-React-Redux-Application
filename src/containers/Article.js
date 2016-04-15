@@ -26,12 +26,9 @@ class ArticleContainer extends Component {
 function getState(stores, props) {
     const { id } = props
     const article = stores.articles.getById(id)
-    //update
     if (!article || !article.text && !article.loading) loadArticleById({ id })
 
-    return {
-        article: article
-    }
+    return { article }
 }
 
 export default connectToStore(['articles'], getState)(ArticleContainer)
