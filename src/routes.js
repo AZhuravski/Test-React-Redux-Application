@@ -7,6 +7,7 @@ import NewArticlePage from './RouteHandlers/NewArticlePage'
 import CommentsRoot from './RouteHandlers/CommentsRoot'
 import CommentsPage from './RouteHandlers/CommentsPage'
 import ArticlesIndex from './RouteHandlers/ArticlesIndex'
+import NotFound from './RouteHandlers/NotFound'
 
 export default (
     <Router history = {browserHistory} >
@@ -23,5 +24,6 @@ export default (
                 <Route path = ":page" component = {CommentsPage} />
             </Route>
         </Route>
+        <Route path = "*" component = {NotFound} />
     </Router>
 )
