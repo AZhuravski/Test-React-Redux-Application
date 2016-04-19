@@ -6,7 +6,15 @@ import { render } from 'react-dom'
 import routes from './routes'
 
 render(routes, document.getElementById('container'))*/
-
+import Counter from './containers/Counter'
 import store from './store'
 
 window.store = store
+
+function renderCounter() {
+    render(<Counter count = {store.getState()} />, document.getElementById('container'))
+}
+
+renderCounter()
+
+store.subscribe(renderCounter)
