@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react'
 
 class Counter extends Component {
     static propTypes = {
-        count: PropTypes.number.isRequired
+        count: PropTypes.number.isRequired,
+        increment: PropTypes.func.isRequired
     };
 
     render() {
@@ -10,8 +11,14 @@ class Counter extends Component {
         return (
             <div>
                 <h1>{count}</h1>
+                <a href = "#" onClick = {this.handleClick}>increment</a>
             </div>
         )
+    }
+
+    handleClick = (ev) => {
+        ev.preventDefault()
+        this.props.increment()
     }
 }
 
