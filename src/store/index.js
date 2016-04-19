@@ -1,10 +1,5 @@
 import { createStore } from 'redux'
-import { INCREMENT } from '../constants'
-
-function reducer(state, action) {
-    const { type, data } = action
-    return type == INCREMENT ? state + 1 : state
-}
+import reducer from '../reducer'
 
 const store = createStore(reducer, 0)
 
