@@ -30,6 +30,7 @@
     "events": "^1.1.0",
     "flux": "^2.1.1",
     "jquery": "^2.2.3",
+    "react-redux": "^4.4.5",
     "react-router": "^2.1.1",
     "redux": "^3.4.0",
     "style-loader": "^0.13.0",
