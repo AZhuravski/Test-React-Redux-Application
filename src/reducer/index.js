@@ -1,6 +1,9 @@
-import { INCREMENT } from '../constants'
+import articleReducer from './articles'
+import counterReducer from './counter'
 
 export default (state, action) => {
-    const { type, data } = action
-    return type == INCREMENT ? state + 1 : state
+    return {
+        articles: articleReducer(state.articles, action),
+        counter: counterReducer(state.counter, action)
+    }
 }
