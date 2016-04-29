@@ -1,0 +1,116 @@
+/* Main CSS table */
+
+/* Browsers Default CSS Reset */
+//@import 'reset.scss';
+
+/* normalize.css v3.0.2 | MIT License | git.io/normalize */
+//@import 'normalize.scss';
+
+/* colors variables */
+$symbols: #05407A;
+$complex-element: #4C8AC7;
+$symbol-attr: #ADC5D9;
+
+/* Global CSS */
+html
+{
+    color: #555;
+    background-color: white;
+}
+
+#container {
+	font: 12px/20px Arial,sans-serif;	
+
+	.main {
+		margin: 20px 20px 10px 23px;
+		padding: 20px;
+		font: 16px/24px Arial,sans-serif;
+		background-color: #eee;	
+		.file {
+			font: 14px/24px Arial,sans-serif;
+		}
+		td {
+			vertical-align: top;
+			padding: 5px 0;
+		}
+		.data {
+			font-weight: bold;
+			padding-right: 40px;
+		}
+		.symbols {
+			color: $symbols;
+		}
+		.complex {
+			color: $complex-element;
+		}
+		.complex-elements {
+			font: 12px/18px Arial,sans-serif;
+		}
+	}
+
+	hr {
+		color: #ddd;
+		width: 1px;
+		border: none;
+	}
+
+	li {
+		font: 12px/16px Arial,sans-serif;
+		&.symbol {
+			list-style: disc outside;
+		}
+		&.complex-element {
+			list-style: circle outside;
+		}
+	}
+
+	h2 {
+		margin-left: 25px;
+		margin-top: 25px;
+	}
+
+	.symbol {
+		padding: 3px 10px 3px 0px;
+		.data {
+			font: italic 12px/16px Arial,sans-serif;
+			padding-right: 6px;
+			&.name {
+				color: $symbols;
+				font-weight: bold;
+			}
+			&.symbol-type {
+				color: $symbol-attr;				
+			}
+			&.section {
+				color: $symbol-attr;					
+			}
+			&.address {
+				color: $symbol-attr;				
+			}
+			&.memtype {
+				color: $symbol-attr;				
+			}
+			&.size {
+				color: $symbol-attr;
+			}
+		}
+		.service {
+			color: #aaa;
+		}
+		&:hover {
+			background-color: #f5f5f5;
+		}
+	}
+	.complex-element {
+		padding: 3px 10px 3px 0px;
+		.name {
+			font-weight: bold;
+		}
+		.service {
+			color: #999;
+		}
+		a {
+			color: $complex-element;
+		}
+	}
+}
