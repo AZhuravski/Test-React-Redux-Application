@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Symbol from '../components/Symbol'
-import Scope from '../components/Scope'
+import ComplexElement from '../components/ComplexElement'
 
 class ElementList extends Component {
     static propTypes = {
@@ -20,15 +20,15 @@ class ElementList extends Component {
             elementsArr = Object.keys(elements)
         return elementsArr.map((element, index) => {
                 if (elements[element].type==='symbol') return (
-                    <li key={element}>
+                    <li key={element} className="symbol">
                         <Symbol
                             symbolName = {element}
                             symbol = {elements[element]} />
                     </li>
                 )
-                if (elements[element].type==='scope') return (
-                    <li key={element}>
-                        <Scope
+                return (
+                    <li key={element} className="complex-element">
+                        <ComplexElement
                             scopeName = {element}
                             scope = {elements[element]} />
                     </li>                    

@@ -22,41 +22,42 @@ class MainPage extends Component {
 
         symbolCounter = this.elementsAnalyser(elements, symbolCounter)  
 
-        console.log('counter:',symbolCounter); 
-             
+        const complexElementStatistic = this.getComplexElementStatistic(symbolCounter)
+
         return (
             <div>
-                <table>
+                <table className="main">
                     <tbody>
                     <tr>
-                        <td>Input file: </td>
-                        <td><b>{storage.file}</b></td>
+                        <td colSpan="3" className="file">Input file: <span className="data">{storage.file}</span></td>
                     </tr>
-                    <tr>
+                    <tr> 
                         <td>Sections: </td>
-                        <td><b>{sectionsAmount}</b></td>
+                        <td className="data" colSpan="3">{sectionsAmount}</td>
                     </tr>
                     <tr>
-                        <td>Root Symbols: </td>
-                        <td><b>{symbolCounter.simpleRootSymbolCounter}</b></td>
-                        <td>Symbols: </td>
-                        <td><b>{symbolCounter.simpleSymbolCounter}</b></td>
+                        <td className="symbols">Root Symbols: </td>
+                        <td className="data symbols">{symbolCounter.simpleRootSymbolCounter}</td>
+                        <td className="symbols">Symbols: </td>
+                        <td className="data symbols">{symbolCounter.simpleSymbolCounter}</td>
                     </tr>
                     <tr>
-                        <td>Root Scopes: </td>
-                        <td><b>{symbolCounter.complexRootSymbolCounter}</b></td>
-                        <td>Scopes: </td>
-                        <td><b>{symbolCounter.complexSymbolCounter}</b></td>
+                        <td className="complex">Root Complex Elements: </td>
+                        <td className="data complex">{symbolCounter.complexRootSymbolCounter}</td>
+                        <td className="complex">Complex Elements: <br/>{complexElementStatistic}</td>
+                        <td className="data complex">{symbolCounter.complexSymbolCounter}</td>
                     </tr>
                     <tr>
                         <td>Root total: </td>
-                        <td><b>{symbolCounter.simpleRootSymbolCounter+symbolCounter.complexRootSymbolCounter}</b></td>
+                        <td className="data">{symbolCounter.simpleRootSymbolCounter+symbolCounter.complexRootSymbolCounter}</td>
                         <td>total: </td>
-                        <td><b>{symbolCounter.simpleSymbolCounter+symbolCounter.complexSymbolCounter}</b></td>
+                        <td className="data">{symbolCounter.simpleSymbolCounter+symbolCounter.complexSymbolCounter}</td>
                     </tr>
                     </tbody>
                 </table>
+                <hr />
 
+                <h2>Symbols & Complex Elements</h2>
                 <ElementList elements={elements} />
             </div>
         )
@@ -64,7 +65,9 @@ class MainPage extends Component {
 
     elementsAnalyser = (elements, counter) => {
         for (var element in elements) {
-            if (elements[element].type==='scope') {
+            counter[elements[element].type] = counter[elements[element].type]? counter[elements[element].type] : 0
+            counter[elements[element].type]++
+            if (elements[element].type!='symbol') {
                 counter.complexSymbolCounter++
                 counter.complexRootSymbolCounter = (!counter.symbolLevel)? counter.complexRootSymbolCounter+1 : counter.complexRootSymbolCounter
                 counter.symbolLevel++
@@ -79,9 +82,18 @@ class MainPage extends Component {
         return counter   
     }
 
-    handleClick = (id) => (ev) => {
-        ev.preventDefault()
-        this.props.deleteArticle(id)
+    getComplexElementStatistic (counter) {
+        var list = []
+        for (var element in counter) {
+            if (element!='simpleSymbolCounter'&&
+                element!='complexSymbolCounter'&&
+                element!='complexRootSymbolCounter'&&
+                element!='simpleRootSymbolCounter'&&
+                element!='symbolLevel'&& 
+                element!='symbol') 
+                list = list.concat(<div className="complex-elements" key={element}>{element}: {counter[element]}</div>)
+        }
+        return list
     }
 }
 

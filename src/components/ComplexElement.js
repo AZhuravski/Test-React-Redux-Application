@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import ElementList from '../components/ElementList'
 import toggleOpen from '../HOC/toggleOpen'
 
-class Scope extends Component {
+class ComplexElement extends Component {
     static propTypes = {
         scopeName: PropTypes.string.isRequired,
         scope: PropTypes.object.isRequired
@@ -11,9 +11,9 @@ class Scope extends Component {
     render() {
         const { scopeName, scope, isOpen } = this.props
         return (
-            <div>
-                <span>{scope.type}: </span>
-                <span><a href="#" onClick = {this.props.toggleOpen}>{scopeName} </a></span>
+            <div className="scope">
+                <span className="name"><a href="#" onClick = {this.props.toggleOpen}>{scopeName}</a></span>
+                <div className="service">{scope.type}</div>
                 {this.getElements()}
             </div>
         )
@@ -26,4 +26,4 @@ class Scope extends Component {
     }
 }
 
-export default toggleOpen(Scope)
+export default toggleOpen(ComplexElement)

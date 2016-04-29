@@ -1,5 +1,5 @@
 {
-  "name": "react_course_29_03",
+  "name": "test application",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/gaearon/react-transform-boilerplate.git"
   },
-  "author": "",
+  "author": "Alexei Zhuravski",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gaearon/react-transform-boilerplate/issues"
@@ -28,6 +28,7 @@
     "concurrently": "^2.0.0",
     "css-loader": "^0.23.1",
     "events": "^1.1.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "flux": "^2.1.1",
     "jquery": "^2.2.3",
     "json-loader": "^0.5.4",
@@ -37,7 +38,8 @@
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.9",
-    "style-loader": "^0.13.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
