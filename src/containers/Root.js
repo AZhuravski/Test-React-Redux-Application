@@ -8,7 +8,7 @@ import DevTools from './DevTools'
 class Root extends Component {
     static propTypes = {
         store: PropTypes.object.isRequired
-    };
+    }
 
     render() {
         return (
